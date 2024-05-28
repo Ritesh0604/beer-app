@@ -1,16 +1,16 @@
 /* Styling for the beer card component */
 .beer-card {
-  border: 1px solid #ccc;
-  border-radius: 8px;
-  padding: 16px;
-  text-align: center;
-  margin: 16px;
-  width: 200px;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    padding: 16px;
+    text-align: center;
+    margin: 16px;
+    width: 200px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 }
 
 .beer-image {
-  max-width: 100%;
-  height: auto;
-  border-radius: 8px;
+    max-width: 100%;
+    height: auto;
+    border-radius: 8px;
 }

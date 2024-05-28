@@ -1,49 +1,49 @@
 /* Styling for the beer list and pagination components */
 .beer-list {
-  padding: 16px;
+    padding: 16px;
 }
 
 .search-input {
-  margin: 16px;
-  padding: 8px;
-  width: 300px;
-  border-radius: 8px;
-  border: 1px solid #ccc;
+    margin: 16px;
+    padding: 8px;
+    width: 300px;
+    border-radius: 8px;
+    border: 1px solid #ccc;
 }
 
 .beer-cards {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
 }
 
 .pagination {
-  display: flex;
-  justify-content: center;
-  list-style: none;
-  padding: 0;
+    display: flex;
+    justify-content: center;
+    list-style: none;
+    padding: 0;
 }
 
 .pagination li {
-  margin: 0 4px;
+    margin: 0 4px;
 }
 
 .pagination li a {
-  border: 1px solid #ccc;
-  padding: 8px 16px;
-  text-decoration: none;
-  color: #007bff;
-  cursor: pointer;
-  border-radius: 4px;
+    border: 1px solid #ccc;
+    padding: 8px 16px;
+    text-decoration: none;
+    color: #007bff;
+    cursor: pointer;
+    border-radius: 4px;
 }
 
 .pagination li.active a {
-  background-color: #007bff;
-  color: white;
-  border-color: #007bff;
+    background-color: #007bff;
+    color: white;
+    border-color: #007bff;
 }
 
 .pagination li.disabled a {
-  color: #ccc;
-  cursor: not-allowed;
+    color: #ccc;
+    cursor: not-allowed;
 }
