@@ -1,7 +1,7 @@
 // src/BeerList.js
 
-import React, { useState, useEffect } from 'react';
 import axios from 'axios';
+import React, { useEffect, useState } from 'react';
 import ReactPaginate from 'react-paginate';
 import BeerCard from './BeerCard';
 import './BeerList.css';
@@ -11,25 +11,30 @@ const BeerList = () => {
     const [search, setSearch] = useState('');
     const [currentPage, setCurrentPage] = useState(0);
     const [beersPerPage] = useState(10); // Number of beers per page
+    const [totalBeers, setTotalBeers] = useState(0);
 
     useEffect(() => {
-        axios.get('https://api.sampleapis.com/beers/ale')
-            .then(response => setBeers(response.data))
-            .catch(error => console.error('Error fetching data:', error));
-    }, []);
+        fetchBeers(currentPage + 1, beersPerPage, search);
+    }, [currentPage, beersPerPage, search]);
 
-    const filteredBeers = beers.filter(beer =>
-        beer.name.toLowerCase().includes(search.toLowerCase())
-    );
+    const fetchBeers = async (page, limit, searchTerm) => {
+        try {
+            const response = await axios.get('https://api.sampleapis.com/beers/ale');
+            const filteredBeers = response.data.filter(beer =>
+                beer.name.toLowerCase().includes(searchTerm.toLowerCase())
+            );
+            setBeers(filteredBeers.slice((page - 1) * limit, page * limit));
+            setTotalBeers(filteredBeers.length);
+        } catch (error) {
+            console.error('Error fetching data:', error);
+        }
+    };
 
-    const pageCount = Math.ceil(filteredBeers.length / beersPerPage);
+    const pageCount = Math.ceil(totalBeers / beersPerPage);
 
     const changePage = ({ selected }) => {
         setCurrentPage(selected);
     };
-
-    const offset = currentPage * beersPerPage;
-    const currentBeers = filteredBeers.slice(offset, offset + beersPerPage);
 
     return (
         <div className="beer-list">
@@ -41,7 +46,7 @@ const BeerList = () => {
                 className="search-input"
             />
             <div className="beer-cards">
-                {currentBeers.map(beer => (
+                {beers.map(beer => (
                     <BeerCard key={beer.id} beer={beer} />
                 ))}
             </div>
