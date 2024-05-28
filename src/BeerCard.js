@@ -1,8 +1,7 @@
-// src/BeerCard.js
-
 import React from 'react';
 import './BeerCard.css';
 
+// BeerCard component to display individual beer data
 const BeerCard = ({ beer }) => {
     return (
         <div className="beer-card">

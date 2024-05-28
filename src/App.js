@@ -4,6 +4,7 @@ import React from 'react';
 import BeerList from './BeerList';
 import './App.css';
 
+// Main App component
 function App() {
     return (
         <div className="App">

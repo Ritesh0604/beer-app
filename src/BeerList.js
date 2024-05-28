@@ -1,22 +1,23 @@
-// src/BeerList.js
-
+import React, { useState, useEffect } from 'react';
 import axios from 'axios';
-import React, { useEffect, useState } from 'react';
 import ReactPaginate from 'react-paginate';
 import BeerCard from './BeerCard';
 import './BeerList.css';
 
+// BeerList component to fetch and display the list of beers with pagination and search functionality
 const BeerList = () => {
-    const [beers, setBeers] = useState([]);
-    const [search, setSearch] = useState('');
-    const [currentPage, setCurrentPage] = useState(0);
-    const [beersPerPage] = useState(10); // Number of beers per page
-    const [totalBeers, setTotalBeers] = useState(0);
+    const [beers, setBeers] = useState([]); // State to hold the list of beers
+    const [search, setSearch] = useState(''); // State for the search input value
+    const [currentPage, setCurrentPage] = useState(0); // State for the current page number
+    const [beersPerPage] = useState(10); // Number of beers to display per page
+    const [totalBeers, setTotalBeers] = useState(0); // Total number of beers (for pagination)
 
+    // Effect to fetch beers when the component mounts or when currentPage, beersPerPage, or search changes
     useEffect(() => {
         fetchBeers(currentPage + 1, beersPerPage, search);
     }, [currentPage, beersPerPage, search]);
 
+    // Function to fetch beers from the API
     const fetchBeers = async (page, limit, searchTerm) => {
         try {
             const response = await axios.get('https://api.sampleapis.com/beers/ale');
@@ -30,8 +31,10 @@ const BeerList = () => {
         }
     };
 
+    // Calculate the total number of pages
     const pageCount = Math.ceil(totalBeers / beersPerPage);
 
+    // Function to handle page change
     const changePage = ({ selected }) => {
         setCurrentPage(selected);
     };
