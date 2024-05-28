@@ -7,7 +7,7 @@ const BeerCard = ({ beer }) => {
         <div className="beer-card">
             <img src={beer.image} alt={beer.name} className="beer-image" />
             <h2>{beer.name}</h2>
-            <p>{beer.description}</p>
+            <p>{beer.price}</p>
         </div>
     );
 };
